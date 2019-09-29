@@ -114,7 +114,9 @@ docker push swr.cn-north-1.myhuaweicloud.com/demo/paymentnet:1.0
 10. 下一步
 11. 创建
 
-
+#### 验证
 等待2个服务全部部署完成
 ![](file:///C:/Users/t00373999/AppData/Roaming/eSpace_Desktop/UserData/t00373999/imagefiles/F2850C68-2C3D-4A51-909B-0909A1EB1629.png)
 点击外网访问地址，即可看到json串，与本地结果一致
+
+查看ServiceComb控制台（如果进入控制台，具体参考。。。。。），会看到已经存在的服务，并且可以监控和进行治理，具体参考。。。。。。。。
