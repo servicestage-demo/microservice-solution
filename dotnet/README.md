@@ -66,19 +66,22 @@ vim order/src/appsettings.json
 ### 打包payment和order的镜像
 首先选择上传到某个swr的region 比如swr.cn-north-1.myhuaweicloud.com
 在该region的镜像中心创建仓库，比如demo，具体参考。。。。。。。。。
+
 下面为例子
 ```sh
 cd order/src/
- sudo docker build . -t swr.cn-north-1.myhuaweicloud.com/demo/ordernet
+sudo docker build . -t swr.cn-north-1.myhuaweicloud.com/demo/ordernet
 ```
 
 ```sh
 cd payment/src/
- sudo docker build . -t swr.cn-north-1.myhuaweicloud.com/demo/paymentnet
+sudo docker build . -t swr.cn-north-1.myhuaweicloud.com/demo/paymentnet
 ```
 
 ### 上传镜像
 具体的镜像上传教程请参考。。。。。。。。。
+
+下面为例子
 ```sh
 docker push swr.cn-north-1.myhuaweicloud.com/demo/ordernet
 docker push swr.cn-north-1.myhuaweicloud.com/demo/paymentnet
