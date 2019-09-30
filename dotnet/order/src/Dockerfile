@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore:2.0.7 AS base
+FROM microsoft/aspnetcore:2.0.9 AS base
 WORKDIR /app
 
 FROM microsoft/aspnetcore-build:2.0.7-2.1.105 AS build
