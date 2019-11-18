@@ -1,0 +1,58 @@
+APPLICATION_ID: Edge-Deploy-End2End
+service_description:
+  name: edge
+  version: 0.0.1
+cse:
+  service:
+    registry:
+      address: https://cse.cn-north-1.myhuaweicloud.com:443
+      instance:
+        watch: false
+  config:
+    client:
+      serverUri: https://cse.cn-north-1.myhuaweicloud.com:443
+      refreshMode: 1
+      refresh_interval: 5000
+  monitor:
+    client:
+      serverUri: https://cse.cn-north-1.myhuaweicloud.com:443
+  rest:
+    address: 0.0.0.0:8000
+
+#  credentials:
+#    accessKey: your ak
+#    secretKey: your sk
+#    project: cn-north-1
+#    akskCustomCipher: default
+
+  http:
+    dispatcher:
+      edge:
+        default:                 # 使用DefaultEdgeDispatcher开发网关服务
+          enabled: true          # 开启DefaultEdgeDispatcher
+          prefix: rest           # 匹配请求路径前缀为/rest
+          # withVersion默认值就是true，这里只是展示一下，实际上可以省略该配置
+          withVersion: true      # 请求带版本号，例如v1表示[1.0.0,2.0.0)范围内的微服务版本
+          # prefixSegmentCount默认值就是1，这里只是展示一下，实际上可以省略该配置
+          prefixSegmentCount: 1  # 前缀长度，例如/rest/provider/v0/hello/Bob，去掉第一段，将/provider/v0/hello/Bob转发到后端
+
+#  http:
+#    dispatcher:
+#      edge:
+#        url:                             # 使用URLMappedEdgeDispatcher开发网关服务
+#          enabled: true                  # 开启URLMappedEdgeDispatcher
+#          mappings:
+#            providerV0:                  # 定义名为providerV0的映射规则
+#              prefixSegmentCount: 1      # 前缀长度为1，例如接到url为/hello/provider/v0/hello/Bob的请求，截去第一段发给provider
+#              path: "/hello/.*"          # 映射规则匹配请求url的正则表达式
+#              microserviceName: provider # 映射规则对应转发的后端微服务
+#              versionRule: 0.0.0-1.0.0   # 匹配的微服务版本范围，大于或等于0.0.0，小于1.0.0
+#            consumerV0:
+#              prefixSegmentCount: 1
+#              path: "/client/.*"
+#              microserviceName: consumer
+#              versionRule: 0.0.0-1.0.0
+
+  accesslog:
+    enabled: true
+    pattern: "%h - - %t cs-uri %s %B %D %SCB-traceId"
