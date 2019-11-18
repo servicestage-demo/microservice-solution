@@ -1,0 +1,12 @@
+---
+cse:
+  protocols:
+    rest:
+      listenAddress: "0.0.0.0:4000"
+  handler:
+    chain:
+      Provider:
+        default: tracing-provider,bizkeeper-provider
+servicecomb:
+  engine:
+    name: default
