@@ -14,3 +14,12 @@ ServiceStage微服务方案样例集合
 
 #### ServiceStage部署
 参考官网
+
+## 微服务API网关
+
+### ServiceStage端到端部署EdgeService网关服务
+通过ServiceStage，将源码构建为EdgeService微服务网关，并将后端服务的API开放到外网。此demo需要以下前提条件：
+- 在华为云上拥有CSE引擎实例、CCE集群、EIP各一个
+- 了解maven构建、docker镜像打包的基本知识
+
+参考例子[edge-service](edge-service)

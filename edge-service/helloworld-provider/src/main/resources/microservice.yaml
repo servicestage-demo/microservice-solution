@@ -1,0 +1,34 @@
+APPLICATION_ID: Edge-Deploy-End2End  # 应用Id 是微服务的一个隔离层级，默认只有同应用下的微服务可以相互调用
+service_description:
+  name: provider            # 微服务名称，同应用下的不同微服务需要有不同的名称
+  version: 0.0.1            # 微服务版本
+cse:
+  service:
+    registry:
+      address: https://cse.cn-north-1.myhuaweicloud.com:443
+      instance:
+        watch: false        # 使用pull模式连接服务中心
+  config:
+    client:
+      serverUri: https://cse.cn-north-1.myhuaweicloud.com:443
+      refreshMode: 1        # 使用pull模式连接配置中心
+      refresh_interval: 5000
+  monitor:                  # 只有从本地接入云上CSE时需要配置monitor地址，云上集群部署时可以通过服务发现接入monitor
+    client:
+      serverUri: https://cse.cn-north-1.myhuaweicloud.com:443
+  rest:
+    address: 0.0.0.0:8080   # 本服务监听的地址
+
+  # 本地连接华为云时需要配置AK/SK，如果是在云上ServiceStage部署则不需要。直接删掉credentials配置即可
+#  credentials:
+#    accessKey: your ak   # 配置你的AK
+#    secretKey: your sk   # 配置你的SK
+#    project: cn-north-1  # 这里的值与sc/cc/monitor的地址相对应，如果配置的是域名，CSEJavaSDK可以自动截取出project
+#    akskCustomCipher: default
+
+  accesslog:
+    enabled: true
+    pattern: "%h - - %t cs-uri %s %B %D %SCB-traceId"
+
+hello:
+  sayHelloPrefix: "Hello "
