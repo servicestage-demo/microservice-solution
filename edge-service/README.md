@@ -125,8 +125,6 @@ ENTRYPOINT [ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar -Xmx
 
 ### 创建云上工程流水线
 
-// TODO: 工程目录变了，需要修改截图
-
 1. 登录ServiceStage控制台，从左侧导航栏进入进入 持续交付 -> 工程，选择创建云上工程。
 
   ![](pic/CreateCloudBasedProject.png)
